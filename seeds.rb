@@ -4,7 +4,7 @@ require './modelos/documento'
 require './modelos/curso'
 require './modelos/curso_pessoa'
 
-# ⚠️ Desativa restrições temporariamente pra evitar erros de chave estrangeira
+#Desativa restrições temporariamente pra evitar erros de chave estrangeira
 ActiveRecord::Base.connection.execute("PRAGMA foreign_keys = OFF")
 
 CursosPessoa.delete_all
@@ -27,11 +27,11 @@ personagens = [
   { first_name: "Poe", last_name: "Dameron", city: "Yavin IV" }
 ]
 
-# 🎓 Cursos padrão para associar
+#Cursos padrão para associar
 nomes_dos_cursos = ["Jedi", "Sith", "Piloto"]
 cursos = nomes_dos_cursos.map { |nome| Curso.find_or_create_by(nome: nome) }
 
-# 🧪 Popula as pessoas, documentos e associa a cursos
+#Popula as pessoas, documentos e associa a cursos
 personagens.each_with_index do |personagem, i|
   p = Pessoa.create(
     first_name: personagem[:first_name],
